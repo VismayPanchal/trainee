@@ -7,17 +7,22 @@
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <link href="css/style.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#sub').click(function(){
+                    $pass = $('#pass').val();
+                    $con = $('#conpass').val();
+                    if ($pass != $con)
+                        alert("Password doesn't match.");
+
+                });
+            });
+        </script>
     </head>
     <body class="no-padding">
         <main class="login">
-            <div class="login__column">
-                <img 
-                    src="images/phone.png"
-                    alt="Phone Image"
-                    title="Phone Image"
-                    class="login__phone-image"
-                />                
-            </div>
+            
             <section class="login__column">
                 <div class="login__section login__sign-in">
                     <img 
@@ -27,7 +32,7 @@
                         class="login__logo"
                     />
                     <!-- x   -->
-                    <form method="GET" action="feed.php" class="login__form">
+                    <form method="GET" action="#" class="login__form">
                         <div class="login__input-container">
                             <input 
                                 type="text"
@@ -38,19 +43,36 @@
                             />
                         </div>
                         <div class="login__input-container">
+                            <input type="email" name="email" placeholder="email" 
+                            class="login__input"/>
+                        </div>
+                        <div class="login__input-container">
                             <input 
                                 type="password"
                                 name="password"
+                                id="pass"
                                 placeholder="Password"
                                 required
                                 class="login__input" 
                             />
-                            <a href="#" class="login__form-link">Forgot?</a>
+                            
+                        </div>
+                        <div class="login__input-container">
+                            <input 
+                                type="password"
+                                name="conpassword"
+                                id="conpass"
+                                placeholder="Confirm Password"
+                                required
+                                class="login__input" 
+                            />
+                            
                         </div>
                         <div class="login__input-container">
                             <input
                                 type="submit"
                                 value="Log in"
+                                id = "sub"
                                 class="login__input login__input--btn"
                             />
                         </div>

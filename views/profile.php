@@ -10,7 +10,7 @@
     </head>
     <body>
         <nav class="navigation">
-            <a href="feed.html">
+            <a href="feed.php">
                 <img 
                     src="images/navLogo.png"
                     alt="logo"
@@ -23,13 +23,13 @@
                 <input type="text" placeholder="Search">
             </div>
             <div class="navigation__icons">
-                <a href="explore.html" class="navigation__link">
+                <a href="explore.php" class="navigation__link">
                     <i class="fa fa-compass"></i>
                 </a>
                 <a href="#" class="navigation__link">
                     <i class="fa fa-heart-o"></i>
                 </a>
-                <a href="profile.html" class="navigation__link">
+                <a href="profile.php" class="navigation__link">
                     <i class="fa fa-user-o"></i>
                 </a>
             </div>
@@ -46,7 +46,7 @@
                     <div class="profile__info">
                         <div class="profile__name">
                             <h1 class="profile__title">serranoarevalo</h1>
-                            <a href="edit-profile.html" class="profile__button u-fat-text">Edit profile</a>
+                            <a href="edit-profile.php" class="profile__button u-fat-text">Edit profile</a>
                             <i class="fa fa-cog fa-2x" id="cog"></i>
                         </div>
                         <ul class="profile__numbers">
@@ -68,7 +68,7 @@
                     </div>
                 </header>
                 <div class="profile__pictures">
-                    <a href="image-detail.html" class="profile-picture">
+                    <a href="image-detail.php" class="profile-picture">
                         <img
                             src="images/feedPhoto.jpg"
                             class="profile-picture__picture"
@@ -82,7 +82,7 @@
                             </span>
                         </div>
                     </a>
-                    <a href="image-detail.html" class="profile-picture">
+                    <a href="image-detail.php" class="profile-picture">
                         <img
                             src="images/feedPhoto.jpg"
                             class="profile-picture__picture"
@@ -96,7 +96,7 @@
                             </span>
                         </div>
                     </a>
-                    <a href="image-detail.html" class="profile-picture">
+                    <a href="image-detail.php" class="profile-picture">
                         <img
                             src="images/feedPhoto.jpg"
                             class="profile-picture__picture"
@@ -110,7 +110,7 @@
                             </span>
                         </div>
                     </a>
-                    <a href="image-detail.html" class="profile-picture">
+                    <a href="image-detail.php" class="profile-picture">
                         <img
                             src="images/feedPhoto.jpg"
                             class="profile-picture__picture"
@@ -124,7 +124,7 @@
                             </span>
                         </div>
                     </a>
-                    <a href="image-detail.html" class="profile-picture">
+                    <a href="image-detail.php" class="profile-picture">
                         <img
                             src="images/feedPhoto.jpg"
                             class="profile-picture__picture"
@@ -138,7 +138,7 @@
                             </span>
                         </div>
                     </a>
-                    <a href="image-detail.html" class="profile-picture">
+                    <a href="image-detail.php" class="profile-picture">
                         <img
                             src="images/feedPhoto.jpg"
                             class="profile-picture__picture"
@@ -176,7 +176,7 @@
             <i class="fa fa-times fa-2x" id="closePopUp"></i>
             <div class="popUp__container">
                 <div class="popUp__buttons">
-                    <a href="index.html" class="popUp__button">Log Out</a>
+                    <a href="index.php" class="popUp__button">Log Out</a>
                     <a href="#" class="popUp__button" id="cancelPopUp">Cancel</a>
                 </div>
             </div>
