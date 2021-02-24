@@ -4,19 +4,39 @@
         <meta charset="UTF-8">
         <title>Login | Instaclone</title>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-        <link href="css/style.css" rel="stylesheet">
+       <link rel="icon" href="/Instagram/views/images/favicon.ico" type="image/x-icon">
+        <link href="/Instagram/views/css/style.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script>
+       <script>
             $(document).ready(function(){
                 $('#sub').click(function(){
-                    $pass = $('#pass').val();
+                    $pass = $('#password').val();
                     $con = $('#conpass').val();
                     if ($pass != $con)
+                    {
                         alert("Password doesn't match.");
+                        return false;
+                    }
+                    else
+                        return true;
 
-                });
+            
+     
+                //alert( $('#username').val());
+                // var user = $('#username').val();
+                // $.ajax({
+                //     url:'check_user.php';
+                //     type: 'POST';
+                //     data: {'uname':user};
+                //     success: function(response){
+                //         if (response==0)
+                //             true;
+                //         else
+                //             alert("username already exist.");
+                //     }
+                // });
+                    });
             });
         </script>
     </head>
@@ -26,16 +46,17 @@
             <section class="login__column">
                 <div class="login__section login__sign-in">
                     <img 
-                        src="images/logo.png"
+                        src="/Instagram/views/images/logo.png"
                         alt="Logo"
                         title="Logo"
                         class="login__logo"
                     />
                     <!-- x   -->
-                    <form method="GET" action="#" class="login__form">
+                    <form method="POST" action="" class="login__form">
                         <div class="login__input-container">
                             <input 
                                 type="text"
+                                id="username"
                                 name="username"
                                 placeholder="Username"
                                 required
@@ -43,14 +64,14 @@
                             />
                         </div>
                         <div class="login__input-container">
-                            <input type="email" name="email" placeholder="email" 
+                            <input type="email" id="email" name="email" placeholder="email" required 
                             class="login__input"/>
                         </div>
                         <div class="login__input-container">
                             <input 
                                 type="password"
                                 name="password"
-                                id="pass"
+                                id="password"
                                 placeholder="Password"
                                 required
                                 class="login__input" 
@@ -84,9 +105,9 @@
                 </div>
                 <div class="login__section login__sign-up">
                     <span class="login__text">
-                        Don't have an account? 
-                        <a href="register.php" class="login__link">
-                            Sign up
+                        Already have an account? 
+                        <a href="login.php" class="login__link">
+                            Log-in
                         </a>
                     </span>
                 </div>
@@ -96,13 +117,13 @@
                     </span>
                     <div class="login__appstores">
                         <img 
-                            src="images/ios.png"
+                            src="/Instagram/views/images/ios.png"
                             alt="iOS"
                             title="Get the app!"
                             class="login__appstore" 
                         />
                         <img 
-                            src="images/android.png"
+                            src="/Instagram/views/images/android.png"
                             alt="Android"
                             title="Get the app!"
                             class="login__appstore" 

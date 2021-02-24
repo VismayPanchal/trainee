@@ -13,11 +13,11 @@ class connection
 
 		if($con->connection_error)
 		{
-			echo "not connected.";
+			//echo "not connected.";
 		}
 		else
 		{
-			echo "connected";
+			//echo "connected";
 		}
 		return $con;
 	}

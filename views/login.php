@@ -32,6 +32,7 @@
                             <input 
                                 type="text"
                                 name="username"
+                                id= "username"
                                 placeholder="Username"
                                 required
                                 class="login__input"
@@ -40,6 +41,7 @@
                         <div class="login__input-container">
                             <input 
                                 type="password"
+                                id= "password"
                                 name="password"
                                 placeholder="Password"
                                 required
