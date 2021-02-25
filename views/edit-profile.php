@@ -4,15 +4,15 @@
         <meta charset="UTF-8">
         <title>Edit Profile | Instaclone</title>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-        <link href="css/style.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/Instagram/views/images/favicon.ico" type="image/x-icon">
+        <link href="/Instagram/views/css/style.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     </head>
     <body>
         <nav class="navigation">
             <a href="feed.php">
                 <img 
-                    src="images/navLogo.png"
+                    src="/Instagram/views/images/navLogo.png"
                     alt="logo"
                     title="logo"
                     class="navigation__logo"
@@ -39,7 +39,7 @@
                 <header class="profile-form__header">
                     <div class="profile-form__avatar-container">
                         <img 
-                            src="images/avatar.jpg"
+                            src="/Instagram/views/images/avatar.jpg"
                             class="profile-form__avatar"
                         />
                     </div>
@@ -143,6 +143,6 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-        <script src="js/app.js"></script>
+        <script src="/Instagram/views/js/app.js"></script>
     </body>
 </html>

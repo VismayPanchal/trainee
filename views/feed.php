@@ -4,15 +4,15 @@
         <meta charset="UTF-8">
         <title>Feed | Instaclone</title>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-        <link href="css/style.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/Instagram/views/images/favicon.ico" type="image/x-icon">
+        <link href="/Instagram/views/css/style.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     </head> 
     <body>
         <nav class="navigation">
             <a href="feed.php">
                 <img 
-                    src="images/navLogo.png"
+                    src="/Instagram/views/images/navLogo.png"
                     alt="logo"
                     title="logo"
                     class="navigation__logo"
@@ -40,7 +40,7 @@
                     <div class="photo__header-column">
                         <img
                             class="photo__avatar"
-                            src="images/avatar.jpg"
+                            src="/Instagram/views/images/avatar.jpg"
                         />
                     </div>
                     <div class="photo__header-column">
@@ -51,7 +51,7 @@
                 <div class="photo__file-container">
                     <img
                         class="photo__file"
-                        src="images/feedPhoto.jpg"
+                        src="/Instagram/views/images/feedPhoto.jpg"
                     />
                 </div>
                 <div class="photo__info">
@@ -84,7 +84,7 @@
                     <div class="photo__header-column">
                         <img
                             class="photo__avatar"
-                            src="images/avatar.jpg"
+                            src="/Instagram/views/images/avatar.jpg"
                         />
                     </div>
                     <div class="photo__header-column">
@@ -95,7 +95,7 @@
                 <div class="photo__file-container">
                     <img
                         class="photo__file"
-                        src="images/feedPhoto.jpg"
+                        src="/Instagram/views/images/feedPhoto.jpg"
                     />
                 </div>
                 <div class="photo__info">

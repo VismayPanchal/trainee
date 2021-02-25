@@ -16,7 +16,7 @@ include('models/models.php');
    include 'views/register.php';
   }
 
-  public function login()
+  public function loginuser()
   {
   	$result = $this->model->login();
   	include 'views/login.php';

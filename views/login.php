@@ -4,15 +4,15 @@
         <meta charset="UTF-8">
         <title>Login | Instaclone</title>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-        <link href="css/style.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/Instagram/views/images/favicon.ico" type="image/x-icon">
+        <link href="/Instagram/views/css/style.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     </head>
     <body class="no-padding">
         <main class="login">
             <div class="login__column">
                 <img 
-                    src="images/phone.png"
+                    src="/Instagram/views/images/phone.png"
                     alt="Phone Image"
                     title="Phone Image"
                     class="login__phone-image"
@@ -21,13 +21,13 @@
             <section class="login__column">
                 <div class="login__section login__sign-in">
                     <img 
-                        src="images/logo.png"
+                        src="/Instagram/views/images/logo.png"
                         alt="Logo"
                         title="Logo"
                         class="login__logo"
                     />
                     <!-- x   -->
-                    <form method="GET" action="feed.php" class="login__form">
+                    <form method="POST" action="" class="login__form">
                         <div class="login__input-container">
                             <input 
                                 type="text"
@@ -76,13 +76,13 @@
                     </span>
                     <div class="login__appstores">
                         <img 
-                            src="images/ios.png"
+                            src="/Instagram/views/images/ios.png"
                             alt="iOS"
                             title="Get the app!"
                             class="login__appstore" 
                         />
                         <img 
-                            src="images/android.png"
+                            src="/Instagram/views/images/android.png"
                             alt="Android"
                             title="Get the app!"
                             class="login__appstore" 
@@ -112,6 +112,6 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-        <script src="js/app.js"></script>
+        <script src="/Instagram/views/js/app.js"></script>
     </body>
 </html>

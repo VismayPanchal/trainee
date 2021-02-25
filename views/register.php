@@ -39,6 +39,7 @@
                     });
             });
         </script>
+
     </head>
     <body class="no-padding">
         <main class="login">
@@ -52,6 +53,7 @@
                         class="login__logo"
                     />
                     <!-- x   -->
+                    <!--<div id="cen">-->
                     <form method="POST" action="" class="login__form">
                         <div class="login__input-container">
                             <input 
@@ -98,10 +100,10 @@
                             />
                         </div>
                     </form>
-                    <span class="login__divider">or</span>
-                    <a class="login__fb-link" href="#">
+             <!--        <span class="login__divider">or</span> -->
+                   <!--  <a class="login__fb-link" href="#">
                         <i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i> Log in with Facebook
-                    </a>
+                    </a> -->
                 </div>
                 <div class="login__section login__sign-up">
                     <span class="login__text">

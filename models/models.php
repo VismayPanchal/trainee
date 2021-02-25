@@ -8,7 +8,18 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
+  <style type="text/css">
+  	#hi
+  	{
+  		width: 500px;
+  		align-self: center;
+  		position: absolute;
+  		margin: auto;
+  		right: 200px;
+  		top :20px;
+  	}
+  </style>
+ </head>
 <body>
 
 </body>
@@ -31,18 +42,36 @@ class models extends connection
 
 	public function login()
 	{
-		$uname = $_POST['uname'];
-		$pass = $_POST['pass']; 
-		$qry = "SELECT * FROM user WHERE user_name = '$uname' AND password='$pass'";
-		$data = $this->conn->query($qry);
-		if($data->num_rows>0)
-		{
-			echo "Login successful.";
+		$uname = $_POST['username'];
+		$pass = $_POST['password']; 
+
+		//echo $_POST['username'];
+		 if (isset($_POST['username']) &&  isset($_POST['password'])) 
+		 {
+			$qry = "SELECT * FROM user WHERE user_name = '$uname' and password='$pass'";
+
+				
+
+			$data = $this->conn->query($qry);
+			if($data->num_rows>0)
+			{
+				header("Location:views/feed.php");
+			}
+			else
+			{
+		
+	?>
+				<div id='hi' class='alert alert-danger alert-dismissible' style='display:inline;'>
+    		<button type='button' class='close' data-dismiss='alert'>&times;</button>
+   			 <strong>Login failed.</strong> 
+  					</div>
+
+	<?php		
+						
+				
+			}
 		}
-		else
-		{
-			echo "Login failed.";
-		}
+		
 	}
 	public function register()
 	{
@@ -57,17 +86,19 @@ class models extends connection
 
 			if ($result->num_rows>0)
 			{
-				echo "<div class='alert alert-danger alert-dismissible'>
+				?><div id='hi' class='alert alert-danger alert-dismissible' style='display:inline;'>
     		<button type='button' class='close' data-dismiss='alert'>&times;</button>
    			 <strong>Warning!</strong> User already exists.
-  					</div>";
+  					</div>
+
+  			<?php
 			}
 			else{
 			//echo $uname, $pass, $email;
 				$qry = "INSERT INTO user (user_name, user_email, password) VALUES ('$uname','$email','$pass')";
 
 				if($this->conn->query($qry) === TRUE)
-				{
+				{ 
 			//echo "data inserted successfully";
 
 				}
