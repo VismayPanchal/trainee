@@ -128,5 +128,38 @@ class models extends connection
 			}
 		}
 	}
+	public function forgot()
+	{
+		
+			$data = $_POST['username'];
+			echo $data;
+			// $qry = "SELECT user_email FROM user where user_email='$data' or user_name='$data'"; 
+			// $result = mysqli_query($this->conn,$qry);
+			// echo $result;
+			// if($result)
+			// {
+			// 	$to ='vismay.addweb@gmail.com';
+			// 	$msg = "Message from my application.";
+			// 	$subject = "Forgot password";
+			// 	$header = "From: vismay.addweb@gmail.com"."\r\n";
+			// 	if(mail($to,$subject,$msg,$header))
+			// 		echo "mail sent";
+			// 	else
+			// 		echo "mail not sent";
+			// 	//echo "This email is sent using PHP Mail";
+
+			// // }	
+
+			// the message
+$msg = "First line of text\nSecond line of text";
+
+// use wordwrap() if lines are longer than 70 characters
+$msg = wordwrap($msg,70);
+
+// send email
+mail("vismay.addweb@gmail.com","My subject",$msg);
+		 
+	
+	}
 }
 ?>

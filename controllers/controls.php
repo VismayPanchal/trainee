@@ -21,5 +21,10 @@ include('models/models.php');
   	$result = $this->model->login();
   	include 'views/login.php';
   }
+  public function forget_pass()
+  {
+    $result = $this->model->forgot();
+    include 'views/forgot.php';
+  }
  }
 ?>

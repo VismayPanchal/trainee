@@ -76,7 +76,7 @@
                         <div class="login__input-container">
                             <input
                                 type="submit"
-                                value="Log in"
+                                value="send link in email"
                                 class="login__input login__input--btn"
                             />
                         </div>
