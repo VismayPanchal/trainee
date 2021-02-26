@@ -18,6 +18,16 @@
   		right: 200px;
   		top :20px;
   	}
+  	#ht
+  	{
+  		 width: 500px;
+  		align-self: center;
+  		position: absolute;
+  		margin: auto;
+  		left: 250px;
+  		top :20px;
+
+  	}
   </style>
  </head>
 <body>
@@ -55,7 +65,8 @@ class models extends connection
 			$data = $this->conn->query($qry);
 			if($data->num_rows>0)
 			{
-				header("Location:views/feed.php");
+				//header("Location:views/feed.php");
+				include_once 'views/feed.php';
 			}
 			else
 			{
@@ -78,6 +89,7 @@ class models extends connection
 		$uname = $_POST['username'];
 		$pass = $_POST['password'];
 		$email = $_POST['email'];
+		
 		 if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])) 
 		 {
 		 	$qry1 = "SELECT * FROM user WHERE user_name = '$uname'";
@@ -86,7 +98,7 @@ class models extends connection
 
 			if ($result->num_rows>0)
 			{
-				?><div id='hi' class='alert alert-danger alert-dismissible' style='display:inline;'>
+				?><div id='ht' class='alert alert-danger alert-dismissible' style='display:inline;'>
     		<button type='button' class='close' data-dismiss='alert'>&times;</button>
    			 <strong>Warning!</strong> User already exists.
   					</div>
@@ -95,16 +107,23 @@ class models extends connection
 			}
 			else{
 			//echo $uname, $pass, $email;
-				$qry = "INSERT INTO user (user_name, user_email, password) VALUES ('$uname','$email','$pass')";
+				$qry = "INSERT INTO user (user_name, user_email, password, bio, user_dp) VALUES ('$uname','$email','$pass','','default.jpg')";
 
-				if($this->conn->query($qry) === TRUE)
+				if(mysqli_query($this->conn, $qry))
 				{ 
 			//echo "data inserted successfully";
-
+					?>
+					<div id='ht' class='alert alert-success alert-dismissible' style='display:inline;'>
+    		<button type='button' class='close' data-dismiss='alert'>&times;</button>
+   			 Registered successfully.
+  					</div>
+					<?php
+					//header('Location:/views/login.php');
+					include_once 'views/login.php';	
 				}
 				else
 				{
-			//echo "Error: " . $qry . "<br>" . $conn->error;	
+			 	echo "Error: "  . "<br>" . $this->conn-> error;	
 				}
 			}
 		}
