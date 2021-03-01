@@ -135,7 +135,7 @@ class models extends connection
 	}
 	public function forgot()
 	{
-		$data = $_POST['username'];
+		$data = $_SESSION['email'];
       //echo $data;
      
      	 if(isset($_POST['code']) && isset($_POST['password']))

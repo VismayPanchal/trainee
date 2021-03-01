@@ -44,6 +44,7 @@
                 $('#fetch').click(function(){
                     var user = $('#username').val();
                    // alert(user);
+                   $("#username").prop('disabled', true);
                 $.ajax({
                     url:'/Instagram/models/send_mail.php',
                     data:{'username':user},

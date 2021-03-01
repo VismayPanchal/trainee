@@ -15,6 +15,8 @@ $_SESSION['code']=$message;
 
 if(isset($_POST['username'])){
 $data = $_POST['username'];
+$_SESSION=$_POST['username'];
+
  // $data = 'yuvraj.addweb@gmail.com';
 $mail = new PHPMailer(true);
 
