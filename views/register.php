@@ -54,7 +54,7 @@
                     />
                     <!-- x   -->
                     <!--<div id="cen">-->
-                    <form method="POST" action="" class="login__form">
+                    <form method="POST" action="#" class="login__form">
                         <div class="login__input-container">
                             <input 
                                 type="text"
@@ -108,7 +108,7 @@
                 <div class="login__section login__sign-up">
                     <span class="login__text">
                         Already have an account? 
-                        <a href="login.php" class="login__link">
+                        <a href="#" class="login__link">
                             Log-in
                         </a>
                     </span>

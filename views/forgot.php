@@ -37,6 +37,32 @@
                 margin-right: 30px;
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script>
+            $(document).ready(function()
+            {
+                $('#fetch').click(function(){
+                    var user = $('#username').val();
+                   // alert(user);
+                $.ajax({
+                    url:'/Instagram/models/send_mail.php',
+                    data:{'username':user},
+                    type:'POST',
+                    success: function(response){
+                        // if (response==1)
+                        //     alert("called");
+                        // else
+                        //     alert("username already exist.");
+                        if(response=="success")
+                            alert("<div id='ht' class='alert alert-success alert-dismissible' style='display:inline;'><button type='button' class='close' data-dismiss='alert'>&times;</button>mail sent!   </div>");
+                        if(response=="fail")
+                            alert("mail; not sent");
+                    }
+                });    
+                });
+                
+            });
+          </script>
     </head>
     <body class="no-padding">
         <main class="login">
@@ -74,12 +100,45 @@
                         </div>
                       
                         <div class="login__input-container">
-                            <input
-                                type="submit"
-                                value="send link in email"
-                                class="login__input login__input--btn"
+                        <input type="button" value="sent link in mail" name="" id="fetch" class="login__input">
+                        </div>
+                        <div class="login__input-container">
+                            <input 
+                                type="text"
+                                name="code"
+                                id= "code"
+                                placeholder="Enter code"
+                              
+                                class="login__input"
                             />
                         </div>
+                      
+                      <div class="login__input-container">
+                            <input 
+                                type="password"
+                                name="password"
+                                id= "password"
+                                placeholder="set password"
+                         
+                                class="login__input"
+                            />
+                        </div>
+                      <div class="login__input-container">
+                            <input 
+                                type="password"
+                                name="cpass"
+                                id= "cpass"
+                                placeholder="confirm password"
+                         
+                                class="login__input"
+                            />
+                        </div>
+                        <div class="login__input-container">
+                            <input type="submit"  name="submit"
+                            value="change password"
+                            class="login__input">
+                        </div>
+                      
                     </form>
                     <span class="login__divider">or</span>
                     <a class="login__fb-link" href="#">

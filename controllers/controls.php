@@ -4,23 +4,19 @@ include('models/models.php');
 
  Class Controller{
   public $model;
-  function __construct()
+  public function __construct()
   {
   	$this->model = new models();
   }
 
 
-  public function show()
+  public function register()
   {
    $result = $this->model->register();
    include 'views/register.php';
   }
 
-  public function loginuser()
-  {
-  	$result = $this->model->login();
-  	include 'views/login.php';
-  }
+
   public function forget_pass()
   {
     $result = $this->model->forgot();

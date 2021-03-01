@@ -36,6 +36,11 @@
 </html>
 
 <?php
+session_start();
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 include_once('connection.php');
 //$conn;
 class models extends connection
@@ -130,36 +135,48 @@ class models extends connection
 	}
 	public function forgot()
 	{
-		
-			$data = $_POST['username'];
-			echo $data;
-			// $qry = "SELECT user_email FROM user where user_email='$data' or user_name='$data'"; 
-			// $result = mysqli_query($this->conn,$qry);
-			// echo $result;
-			// if($result)
-			// {
-			// 	$to ='vismay.addweb@gmail.com';
-			// 	$msg = "Message from my application.";
-			// 	$subject = "Forgot password";
-			// 	$header = "From: vismay.addweb@gmail.com"."\r\n";
-			// 	if(mail($to,$subject,$msg,$header))
-			// 		echo "mail sent";
-			// 	else
-			// 		echo "mail not sent";
-			// 	//echo "This email is sent using PHP Mail";
+		$data = $_POST['username'];
+      //echo $data;
+     
+     	 if(isset($_POST['code']) && isset($_POST['password']))
+     	 {
+     	 	$code = $_POST['code'];
+     	 	$varify = $_SESSION['code'];
+     	 	$pass = $_POST['password'];
+     	 //	echo $code, $varify;
+     	 	if($code == $varify)
+     	 	{
 
-			// // }	
+     	 	$qry = "UPDATE user SET password='$pass' WHERE user_email='$data'";
+     	 	if(mysqli_query($this->conn, $qry))
+				{ 
+			//echo "data inserted successfully";
+					?>
+					<div id='ht' class='alert alert-success alert-dismissible' style='display:inline;'>
+    		<button type='button' class='close' data-dismiss='alert'>&times;</button>
+   			Password changed.
+  					</div>
+					<?php
+					//header('Location:/views/login.php');
+					include_once 'views/login.php';	
+				}
+				else
+				{
+			 	echo "Error: "  . "<br>" . $this->conn-> error;	
+				}
 
-			// the message
-$msg = "First line of text\nSecond line of text";
+     	 	}
+     	 	else
+     	 	{
+     	 		?>
+     	 		<div id='ht' class='alert alert-danger alert-dismissible' style='display:inline;'>
+    		<button type='button' class='close' data-dismiss='alert'>&times;</button>
+   			Wrong code.
+  					</div>
+     	 		<?php
+     	 	}
+     	 }
 
-// use wordwrap() if lines are longer than 70 characters
-$msg = wordwrap($msg,70);
-
-// send email
-mail("vismay.addweb@gmail.com","My subject",$msg);
-		 
-	
 	}
 }
 ?>
