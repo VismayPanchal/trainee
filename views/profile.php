@@ -39,7 +39,7 @@
                 <header class="profile__header">
                     <div class="profile__avatar-container">
                         <img 
-                            src="/Instagram/views/images/avatar.jpg"
+                            src="/Instagram/views/images/default.jpg"
                             class="profile__avatar"
                         />
                     </div>

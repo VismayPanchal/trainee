@@ -22,5 +22,11 @@ include('models/models.php');
     $result = $this->model->forgot();
     include 'views/forgot.php';
   }
+  public function explore()
+  {
+    $data = $this->model->fetch_user();
+    //header('location:../views/explore.php');
+    include 'views/explore.php';
+  }
  }
 ?>

@@ -59,11 +59,12 @@ class models extends connection
 	{
 		$uname = $_POST['username'];
 		$pass = $_POST['password']; 
+		$_SESSION['user'] = $uname;
 
 		//echo $_POST['username'];
 		 if (isset($_POST['username']) &&  isset($_POST['password'])) 
 		 {
-			$qry = "SELECT * FROM user WHERE user_name = '$uname' and password='$pass'";
+			$qry = "SELECT user_id FROM user WHERE user_name = '$uname' and password='$pass'";
 
 				
 
@@ -71,7 +72,8 @@ class models extends connection
 			if($data->num_rows>0)
 			{
 				//header("Location:views/feed.php");
-				include_once 'views/feed.php';
+				$_SESSION['id'] = $data;
+				//include_once 'views/feed.php';
 			}
 			else
 			{
@@ -88,6 +90,21 @@ class models extends connection
 			}
 		}
 		
+	}
+
+	public function fetch_user()
+	{
+		$cur_id = $_SESSION['id'];
+		$qrty = "SELECT * FROM user WHERE user_id != '$cur_id'";
+		$data = mysqli_query($this->conn,$qrty);
+		if($data->num_rows>0)
+		{
+			while($row=$data->fetch_object())
+			{
+				$r[]=$row;
+			}
+		}
+		return $r;
 	}
 	public function register()
 	{
