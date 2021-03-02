@@ -65,7 +65,7 @@
                 <div class="login__section login__sign-up">
                     <span class="login__text">
                         Don't have an account? 
-                        <a href="register.php" class="login__link">
+                        <a href="" class="login__link">
                             Sign up
                         </a>
                     </span>

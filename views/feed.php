@@ -35,23 +35,27 @@
             </div>
         </nav>
         <main class="feed">
+            <?php
+            foreach($result as $d)
+
+           {?>
             <section class="photo">
                 <header class="photo__header">
                     <div class="photo__header-column">
                         <img
                             class="photo__avatar"
-                            src="/Instagram/views/images/avatar.jpg"
+                            src="/Instagram/views/profiles/<?php echo  $d['user_dp'];?>"
                         />
                     </div>
                     <div class="photo__header-column">
-                        <span class="photo__username">serranoarevalo</span>
-                        <span class="photo__location">European Art of Living Center - Bad Antogast</span>
+                        <span class="photo__username"><?php echo $d['user_name']; ?></span>
+                        
                     </div>
                 </header>
                 <div class="photo__file-container">
                     <img
                         class="photo__file"
-                        src="/Instagram/views/images/feedPhoto.jpg"
+                        src="/Instagram/views/post_upl/<?php echo $d['post'];?>"
                     />
                 </div>
                 <div class="photo__info">
@@ -66,11 +70,13 @@
                     <span class="photo__likes">35 likes</span>
                     <ul class="photo__comments">
                         <li class="photo__comment">
-                            <span class="photo__comment-author">serranoarevalo</span>wow this is great!
+                            <span class="photo__comment-author"><?php echo  $d['user_name'];?></span><?php echo  $d['caption'];?>
                         </li>
-                        <li class="photo__comment">
+                       <!--  <li class="photo__comment">
                             <span class="photo__comment-author">lynn</span>no is not!
-                        </li>
+
+                            post comments
+                        </li> -->
                     </ul>
                     <span class="photo__time-ago">11 hours ago</span>
                     <div class="photo__add-comment-container">
@@ -79,7 +85,9 @@
                     </div>
                 </div>
             </section>
-           
+           <?php
+       }
+       ?>
         </main>
         <footer class="footer">
             <nav class="footer__nav">

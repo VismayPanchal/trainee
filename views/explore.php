@@ -43,7 +43,7 @@
                         <div class="people__column">
                             <div class="people__avatar-container">
                                 <img 
-                                    src="/Instagram/views/profiles/<?php echo $d->user_dp?>"
+                                    src="/Instagram/views/profiles/<?php echo  $d->user_dp?>"
                                     class="people__avatar"
                                 />
                             </div>

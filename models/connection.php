@@ -11,9 +11,9 @@ class connection
 
 		$con = new mysqli($host,$user,$password,$db);	
 
-		if($con->connection_error)
+		if($con)
 		{
-			//echo "not connected.";
+			//echo "xconnected.";
 		}
 		else
 		{

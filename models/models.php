@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +41,7 @@
 </html>
 
 <?php
-session_start();
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -73,6 +78,7 @@ class models extends connection
 			{
 				//header("Location:views/feed.php");
 				$_SESSION['id'] = $data;
+				//
 				//include_once 'views/feed.php';
 			}
 			else
@@ -105,6 +111,62 @@ class models extends connection
 			}
 		}
 		return $r;
+	}
+
+	public function home()
+	{
+		if(1)//if(isset($_SESSION['user']))
+		{
+			//$cur_id = $_SESSION['id'];
+			$cur_id=41;
+			$qry = "SELECT user_follow_id FROM user_follow WHERE user_id = 41";
+			$result = mysqli_query($this->conn,$qry);
+
+			if($result->num_rows>0)
+			{
+				//echo $result[0];
+
+				while($row = $result->fetch_row())
+				{
+					//echo $row[0];
+					
+					$qr = "SELECT * FROM user as a inner join post as b ON a.user_id = b.user_id WHERE a.user_id = $row[0]";
+					$resu = mysqli_query($this->conn,$qr);
+					if($resu->num_rows>0)
+					{
+						$r[]=$resu->fetch_assoc();
+
+					}
+					//echo $r; 	
+					// $res = mysqli_query($this->conn,$q);
+					// if($res->num_rows>0)
+					// {
+					// 	while($rows = $res->fetch_object())
+					// 	{
+					// 		$r[]=$rows;
+					// 	}
+					// }
+
+					// $qr= "SELECT * FROM user WHERE user_id='$row[0]'";
+					// $resl = mysqli_query($this->conn,$qr);
+					// if($resl->num_rows>0)
+					// {
+					// 	while ($rws = $resl->fetch_object())
+					// 	{
+					// 		$r[]=$rws;
+					// 	}
+
+					// }
+				}
+				return $r;
+			}
+			
+
+		}
+		else
+		{
+			return "not login";
+		}
 	}
 	public function register()
 	{

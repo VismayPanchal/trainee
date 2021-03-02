@@ -8,7 +8,12 @@ include('models/models.php');
   {
   	$this->model = new models();
   }
+public function lomgin()
+  {
+    $this->model->login();
+    include 'views/login.php';
 
+  }
 
   public function register()
   {
@@ -27,6 +32,13 @@ include('models/models.php');
     $data = $this->model->fetch_user();
     //header('location:../views/explore.php');
     include 'views/explore.php';
+  }
+
+  public function home_page()
+  {
+    $result = $this->model->home();
+    
+    include 'views/feed.php';
   }
  }
 ?>
