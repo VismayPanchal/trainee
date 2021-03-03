@@ -42,18 +42,16 @@
             $(document).ready(function()
             {
                 $('#fetch').click(function(){
-                    var user = $('#username').val();
+                    var user = $('#email').val();
                    // alert(user);
-                   $("#username").prop('disabled', true);
+                   $("#email").prop('disabled', true);
+                   $('#email').val(user);
                 $.ajax({
                     url:'/Instagram/models/send_mail.php',
-                    data:{'username':user},
+                    data:{'email':user},
                     type:'POST',
                     success: function(response){
-                        // if (response==1)
-                        //     alert("called");
-                        // else
-                        //     alert("username already exist.");
+                       
                         if(response=="success")
                             alert("<div id='ht' class='alert alert-success alert-dismissible' style='display:inline;'><button type='button' class='close' data-dismiss='alert'>&times;</button>mail sent!   </div>");
                         if(response=="fail")
@@ -92,9 +90,9 @@
                         <div class="login__input-container">
                             <input 
                                 type="text"
-                                name="username"
-                                id= "username"
-                                placeholder="Email or username"
+                                name="email"
+                                id= "email"
+                                placeholder="Enter email"
                                 required
                                 class="login__input"
                             />

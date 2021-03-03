@@ -1,5 +1,5 @@
 <?php
-include('models/models.php');
+include_once('models/models.php');
 
 
  Class Controller{
@@ -8,7 +8,7 @@ include('models/models.php');
   {
   	$this->model = new models();
   }
-public function lomgin()
+public function login()
   {
     $this->model->login();
     include 'views/login.php';
@@ -26,6 +26,11 @@ public function lomgin()
   {
     $result = $this->model->forgot();
     include 'views/forgot.php';
+  }
+  public function edit_profile()
+  {
+    $this->model->edit_profile();
+    include 'views/edit-profile.php';
   }
   public function explore()
   {

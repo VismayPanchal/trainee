@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,6 +13,33 @@
         <link rel="shortcut icon" href="/Instagram/views/images/favicon.ico" type="image/x-icon">
         <link href="/Instagram/views/css/style.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script>
+            $(document).ready(function(){
+                $.ajax({
+
+                    url:'/Instagram/models/fetch_user_details.php',
+                    type:'POST',
+                    dataType:"json",
+                    success:function(data){
+                        //var obj = JSON.parse(data);
+                         $('#username').val(data.user_name);
+                         alert(data.user_name);
+                        // alert(obj.user_name);
+                        //ent.write(data['user_dp']);
+                        
+                    }
+                });
+            });
+          </script>
+          <style type="text/css">
+              #imd
+              {
+                width: 100px;
+                height: 100px;
+              }
+          </style>
     </head>
     <body>
         <nav class="navigation">
@@ -37,16 +70,16 @@
         <main class="edit-profile">
             <section class="profile-form">
                 <header class="profile-form__header">
-                    <div class="profile-form__avatar-container">
+                   <div id="imd"><!--- <div class="profile-form__avatar-container">-->
                         <img 
-                            src="/Instagram/views/images/avatar.jpg"
-                            class="profile-form__avatar"
+                            src="/Instagram/views/profiles/<?php print_r($_SESSION['dp']);?>"
+                            class="profile-form__avatar" id="imd"
                         />
                     </div>
-                    <h4 class="profile-form__title">serranoarevalo</h4>
+                  
                 </header>
-                <form action="#" class="edit-profile__form">
-                    <div class="edit-profile__form-row">
+                <form action="" method="POST" class="edit-profile__form" enctype="multipart/form-data">
+                   <!--  <div class="edit-profile__form-row">
                         <label for="name" class="edit-profile__label">Name
                         </label>
                         <input 
@@ -55,18 +88,27 @@
                             value="Nicolás Serrano Arévalo"
                             class="edit-profile__input"
                         />
+                    </div> -->
+                    <div class="edit-profile__form-row">
+                        <label for="dp" class="edit-profile__label">
+                            Change profile
+                        </label>
+                        <input type="file" name="dp" id="dp" class="edit-profile__input">
                     </div>
                     <div class="edit-profile__form-row">
                         <label for="username" class="edit-profile__label">
                             Username
                         </label>
+                      
                         <input 
                             type="text"
                             id="username"
+                            name="username"
                             class="edit-profile__input"
+                            value="<?php print_r($_SESSION['user']); ?>" 
                         />
                     </div>
-                    <div class="edit-profile__form-row">
+                    <!-- <div class="edit-profile__form-row">
                         <label for="website" class="edit-profile__label">
                             Website
                         </label>
@@ -75,12 +117,12 @@
                             id="website"
                             class="edit-profile__input"
                         />
-                    </div>
+                    </div> -->
                     <div class="edit-profile__form-row">
                         <label for="bio" class="edit-profile__label">
                             Bio
                         </label>
-                        <textarea id="bio" class="edit-profile__textarea"></textarea>
+                        <textarea id="bio" name="bio" class="edit-profile__textarea"><?php print_r($_SESSION['bio']);?></textarea>
                     </div>
                     <div class="edit-profile__form-row">
                         <label for="email" class="edit-profile__label">
@@ -90,9 +132,11 @@
                             type="email"
                             class="edit-profile__input"
                             id="email"
+                            name="email"
+                            value="<?php echo $_SESSION['email'];?>"
                         />
                     </div>
-                    <div class="edit-profile__form-row">
+                   <!--  <div class="edit-profile__form-row">
                         <label for="phone-number" class="edit-profile__label">
                             Phone Number
                         </label>
@@ -101,20 +145,20 @@
                             class="edit-profile__input"
                             id="phone-number"
                         />
-                    </div>
-                    <div class="edit-profile__form-row">
+                    </div> -->
+                    <!-- <div class="edit-profile__form-row">
                         <label for="gender" class="edit-profile__label">Gender</label>
                         <select id="gender">
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="whatever">Whatever</option>
                         </select>
-                    </div>
-                    <div class="edit-profile__form-row">
+                    </div> -->
+               <!--      <div class="edit-profile__form-row">
                         <span class="edit-profile__label">Similar Account Suggestions</span>
                         <input type="checkbox" id="similar" checked>
                         <label for="similar">Include your account when recommending similar accounts people might want to follow. <a href="#">[?]</a></label>
-                    </div>
+                    </div> -->
                     <div class="edit-profile__form-row">
                         <label class="edit-profile__label"></label>
                         <input type="submit" value="Submit">

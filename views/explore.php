@@ -23,13 +23,13 @@
                 <input type="text" placeholder="Search">
             </div>
             <div class="navigation__icons">
-                <a href="explore.php" class="navigation__link">
+                <a href="explore" class="navigation__link">
                     <i class="fa fa-compass"></i>
                 </a>
                 <a href="#" class="navigation__link">
                     <i class="fa fa-heart-o"></i>
                 </a>
-                <a href="profile.php" class="navigation__link">
+                <a href="profile" class="navigation__link">
                     <i class="fa fa-user-o"></i>
                 </a>
             </div>

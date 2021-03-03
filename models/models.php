@@ -41,11 +41,6 @@ session_start();
 </html>
 
 <?php
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
 include_once('connection.php');
 //$conn;
 class models extends connection
@@ -77,8 +72,9 @@ class models extends connection
 			if($data->num_rows>0)
 			{
 				//header("Location:views/feed.php");
-				$_SESSION['id'] = $data;
+				$_SESSION['id'] = $data->fetch_row();
 				//
+				header("location:home_page");
 				//include_once 'views/feed.php';
 			}
 			else
@@ -91,6 +87,7 @@ class models extends connection
   					</div>
 
 	<?php		
+			//include "/Instagram/index.php/login";
 						
 				
 			}
@@ -100,7 +97,7 @@ class models extends connection
 
 	public function fetch_user()
 	{
-		$cur_id = $_SESSION['id'];
+		$cur_id = $_SESSION['id'][0];
 		$qrty = "SELECT * FROM user WHERE user_id != '$cur_id'";
 		$data = mysqli_query($this->conn,$qrty);
 		if($data->num_rows>0)
@@ -115,11 +112,12 @@ class models extends connection
 
 	public function home()
 	{
-		if(1)//if(isset($_SESSION['user']))
+		if(isset($_SESSION['user']))
 		{
-			//$cur_id = $_SESSION['id'];
-			$cur_id=41;
-			$qry = "SELECT user_follow_id FROM user_follow WHERE user_id = 41";
+			$cur_id = $_SESSION['id'][0];
+			///$cur_id=41;
+			//print_r($_SESSION['id'][0]);
+			$qry = "SELECT user_follow_id FROM user_follow WHERE user_id = '$cur_id'";
 			$result = mysqli_query($this->conn,$qry);
 
 			if($result->num_rows>0)
@@ -222,7 +220,7 @@ class models extends connection
      	 	$code = $_POST['code'];
      	 	$varify = $_SESSION['code'];
      	 	$pass = $_POST['password'];
-     	 //	echo $code, $varify;
+     	
      	 	if($code == $varify)
      	 	{
 
@@ -257,5 +255,62 @@ class models extends connection
      	 }
 
 	}
+
+	public function edit_profile()
+	{
+		if(isset($_SESSION['id'][0]))
+		{
+			if(isset($_POST['username']) || isset($_POST['email']) || isset($_POST['bio']) || isset($_POST['dp']))
+			{
+				$name = $_POST['username'];
+				$email = $_POST['email'];
+				$bio = $_POST['bio'];
+				$dp = $_FILES["dp"]["name"];
+				$id=$_SESSION['id'][0];
+				$qr = "UPDATE user SET user_name='$name', user_email='$email', bio='$bio', user_dp='$dp' WHERE user_id='$id'";
+				if(mysqli_query($this->conn, $qr))
+				{ 
+			//echo "data inserted successfully";
+					?>
+					<div id='ht' class='alert alert-success alert-dismissible' style='display:inline;'>
+    		<button type='button' class='close' data-dismiss='alert'>&times;</button>
+   			profile updated.
+  					</div>
+					<?php
+					//header('Location:/views/login.php');
+					//include_once 'views/login.php';	
+				}
+				else
+				{
+			 	echo "Error: "  . "<br>" . $this->conn-> error;	
+				}
+				  if(!empty($_FILES['dp']))
+ 				 {
+  	
+  				  $path = "/Instagram/views/profile/";
+   					 $path = $path . basename( $_FILES['dp']['name']);
+
+   					 if(move_uploaded_file($_FILES['dp']['tmp_name'], $path)) {
+  				    echo "The file ".  basename( $_FILES['dp']['name']). 
+     					 " has been uploaded";
+   					 } else{
+    			    echo "There was an error uploading the file, please try again!";
+  					  }
+  				}
+
+     	 	}
+
+			
+		}
+		else
+     	 	{
+     	 		?>
+     	 		<div id='ht' class='alert alert-danger alert-dismissible' style='display:inline;'>
+    		<button type='button' class='close' data-dismiss='alert'>&times;</button>
+   			Not logged in.
+  					</div>
+     	 		<?php
+     	 	}	
+     	 }
 }
 ?>

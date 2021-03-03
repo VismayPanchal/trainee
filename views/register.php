@@ -108,7 +108,7 @@
                 <div class="login__section login__sign-up">
                     <span class="login__text">
                         Already have an account? 
-                        <a href="#" class="login__link">
+                        <a href="login" class="login__link">
                             Log-in
                         </a>
                     </span>

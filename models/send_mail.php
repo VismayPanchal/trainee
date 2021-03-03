@@ -1,21 +1,21 @@
-
 <?php
+session_start();
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 require '../vendor/autoload.php';
   
-session_start();
+
+
+
+
+if(isset($_POST['email'])){
+$data = $_POST['email'];
+$_SESSION["email"]=$_POST["email"];
 
 $message = rand(999,9999);
-$_SESSION['code']=$message;
-
-
-
-if(isset($_POST['username'])){
-$data = $_POST['username'];
-$_SESSION=$_POST['username'];
+$_SESSION["code"]=$message;
 
  // $data = 'yuvraj.addweb@gmail.com';
 $mail = new PHPMailer(true);
@@ -31,13 +31,13 @@ try {
     $mail->Password   = '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';                         
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;       
     $mail->Port       = 587;                                     
-    $mail->setFrom('smith27202@gmail.com', 'Mailer');
+    $mail->setFrom('smith27202@gmail.com', 'FInsta');
     $mail->addAddress($data, 'Joe User');     
 
 
   
     $mail->isHTML(true);                                  
-    $mail->Subject = 'Here is the subject';
+    $mail->Subject = '<b>Forgot password</b>';
     $mail->Body    = 'Hello '.$data.'<br>
         You recently requested to reset your password. Here is the verifiction code to change your password.<br> Code: '.$message.'<br><br>
           Thanks,<br>FInsta team and Co.';
