@@ -25,18 +25,26 @@ if(isset($_SESSION['id'][0]))
 	}
 
 }
+$a=array();
+$cnt=0;
 foreach($arr as $x => $x_value) {
-  echo "Key=" . $x . ", Value=" . $x_value;
-  echo "<br>";
+ // echo "Key=" . $x . ", Value=" . $x_value;
+ // echo "<br>";
+  $a[$cnt]=$x_value;
+  $cnt++;
 }
 //retur $arr;
-echo json_encode($arr);
-$_SESSION['dp']=$arr["user_dp"];
-$_SESSION['bio']=$arr["bio"];
-$_SESSION['email']=$arr["user_email"];
+
+//$_SESSION['dp']=$arr["user_dp"];
+//$_SESSION['bio']=$arr["bio"];
+//$_SESSION['email']=$arr["user_email"];
+//echo json_encode($arr);
 //echo $arr['user_name'];
-//eturn $arr;
-exit();
+// for ($i=0;$i<count($a);$i++)
+// 	echo $a[$i]."<br";
+// echo $arr;
+echo json_encode($arr);
+
 }
 }
 

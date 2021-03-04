@@ -8,6 +8,30 @@
         <link href="/Instagram/views/css/style.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     </head> 
+       <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    $('.heart').click(function(){
+       
+        var pid = $(this).data('id');
+        // alert(pid);
+        $.ajax({
+            url:'like.php',
+            type:'POST',
+            data: { "post_id" : pid },
+            success:function(response)
+            {
+                $('#get_lk').val(response);
+            }
+        });
+    });
+});
+    </script>
+
     <body>
         <nav class="navigation">
             <a href="feed.php">
@@ -60,14 +84,14 @@
                 </div>
                 <div class="photo__info">
                     <div class="photo__icons">
-                        <span class="photo__icon">
-                            <i class="fa fa-heart-o heart fa-lg"></i>
+                        <span class="photo__icon" >
+                            <i class="fa fa-heart-o heart fa-lg" data-id="<?= $d['post_id']; ?>"></i>
                         </span>
                         <span class="photo__icon">
                             <i class="fa fa-comment-o fa-lg"></i>
                         </span>
                     </div>
-                    <span class="photo__likes">35 likes</span>
+                    <span class="photo__likes" id="get_lk"> </span> likes
                     <ul class="photo__comments">
                         <li class="photo__comment">
                             <span class="photo__comment-author"><?php echo  $d['user_name'];?></span><?php echo  $d['caption'];?>

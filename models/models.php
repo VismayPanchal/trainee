@@ -260,12 +260,13 @@ class models extends connection
 	{
 		if(isset($_SESSION['id'][0]))
 		{
-			if(isset($_POST['username']) || isset($_POST['email']) || isset($_POST['bio']) || isset($_POST['dp']))
+			if(isset($_POST['username']) || isset($_POST['email']) || isset($_POST['bio']) || isset($_POST['uploaded_file']))
 			{
 				$name = $_POST['username'];
 				$email = $_POST['email'];
 				$bio = $_POST['bio'];
-				$dp = $_FILES["dp"]["name"];
+				$dp = $_FILES["uploaded_file"]["name"];
+
 				$id=$_SESSION['id'][0];
 				$qr = "UPDATE user SET user_name='$name', user_email='$email', bio='$bio', user_dp='$dp' WHERE user_id='$id'";
 				if(mysqli_query($this->conn, $qr))
@@ -284,19 +285,38 @@ class models extends connection
 				{
 			 	echo "Error: "  . "<br>" . $this->conn-> error;	
 				}
-				  if(!empty($_FILES['dp']))
- 				 {
+				  // if(!empty($_FILES["dp"]))
+ 				 // {
   	
-  				  $path = "/Instagram/views/profile/";
-   					 $path = $path . basename( $_FILES['dp']['name']);
+  				//   $path = "Instagram/models/upload/";
+  				//   echo $path;
+  				//   $file_name = $_FILES["dp"]["name"];
+  				//   echo $file_name;
+   			// 		// $path = $path . basename( $_FILES["dp"]["name"]);
+   			// 		 echo ($_FILES["dp"]["name"]);
+   			// 		 echo "<br>$path";
+   			// 		 $tmp= $_FILES['dp']['tmp_name'];
+   			// 		 if(move_uploaded_filssse($tmp, $path.$file_name)) {
+  				//     echo "The file has been uploaded";
+   			// 		 } else{
+    		// 	    echo "There was an error uploading the file, please try again!".$_FILES["dp"]["error"];
+  				// 	  }
+  				// }
+  				  if(!empty($_FILES['uploaded_file']))
+ 				 {
 
-   					 if(move_uploaded_file($_FILES['dp']['tmp_name'], $path)) {
-  				    echo "The file ".  basename( $_FILES['dp']['name']). 
-     					 " has been uploaded";
-   					 } else{
-    			    echo "There was an error uploading the file, please try again!";
-  					  }
-  				}
+  	
+ 			   		//$path = "Instagram/views/profiles/";
+ 			   		$path= "views/profiles/";
+ 				   $path = $path . basename( $_FILES['uploaded_file']['name']);
+ 				   echo $path;
+				    if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path)) {
+				      echo "The file ".  basename( $_FILES['uploaded_file']['name']). 
+				      " has been uploaded";
+				    } else{
+				        echo "There was an error uploading the file, please try again!";
+				    }
+				  }
 
      	 	}
 

@@ -26,6 +26,7 @@ else
 }
 $name=$_POST['name'];
 $filename = $_FILES["uploaded_file"]["name"];
+
 $sql="insert into images(name,image) values('$name','$filename')";
 $result=$conn->prepare($sql);
 $result->execute();

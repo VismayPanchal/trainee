@@ -20,13 +20,12 @@ session_start();
                 $.ajax({
 
                     url:'/Instagram/models/fetch_user_details.php',
-                    type:'POST',
                     dataType:"json",
                     success:function(data){
-                        //var obj = JSON.parse(data);
-                         $('#username').val(data.user_name);
-                         alert(data.user_name);
-                        // alert(obj.user_name);
+                        var obj = JSON.parse(data);
+                        // $('#username').val(data.user_name);
+                        // alert(data[0]);
+                         alert(obj.user_name);
                         //ent.write(data['user_dp']);
                         
                     }
@@ -90,10 +89,10 @@ session_start();
                         />
                     </div> -->
                     <div class="edit-profile__form-row">
-                        <label for="dp" class="edit-profile__label">
+                        <label class="edit-profile__label">
                             Change profile
                         </label>
-                        <input type="file" name="dp" id="dp" class="edit-profile__input">
+                        <input type="file" name="uploaded_file" />
                     </div>
                     <div class="edit-profile__form-row">
                         <label for="username" class="edit-profile__label">
