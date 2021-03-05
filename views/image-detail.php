@@ -1,3 +1,7 @@
+<?php
+session_start();
+//print_r($_SESSION);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -23,13 +27,13 @@
                 <input type="text" placeholder="Search">
             </div>
             <div class="navigation__icons">
-                <a href="explore.php" class="navigation__link">
+                <a href="explore" class="navigation__link">
                     <i class="fa fa-compass"></i>
                 </a>
                 <a href="#" class="navigation__link">
                     <i class="fa fa-heart-o"></i>
                 </a>
-                <a href="profile.php" class="navigation__link">
+                <a href="view_profile" class="navigation__link">
                     <i class="fa fa-user-o"></i>
                 </a>
             </div>

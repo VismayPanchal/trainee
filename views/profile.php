@@ -1,3 +1,8 @@
+<?php
+session_start();
+//print_r($_SESSION);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -23,38 +28,39 @@
                 <input type="text" placeholder="Search">
             </div>
             <div class="navigation__icons">
-                <a href="explore.php" class="navigation__link">
+                <a href="explore" class="navigation__link">
                     <i class="fa fa-compass"></i>
                 </a>
                 <a href="#" class="navigation__link">
                     <i class="fa fa-heart-o"></i>
                 </a>
-                <a href="profile.php" class="navigation__link">
+                <a href="view_profile" class="navigation__link">
                     <i class="fa fa-user-o"></i>
                 </a>
             </div>
         </nav>
         <main class="profile-container">
+
             <section class="profile">
                 <header class="profile__header">
                     <div class="profile__avatar-container">
                         <img 
-                            src="/Instagram/views/images/default.jpg"
+                            src="/Instagram/views/profiles/<?php print_r($_SESSION['dp']);?>"
                             class="profile__avatar"
                         />
                     </div>
                     <div class="profile__info">
                         <div class="profile__name">
-                            <h1 class="profile__title">serranoarevalo</h1>
-                            <a href="edit-profile.php" class="profile__button u-fat-text">Edit profile</a>
+                            <h1 class="profile__title"><?php echo $_SESSION['user'];?></h1>
+                            <a href="profile" class="profile__button u-fat-text">Edit profile</a>
                             <i class="fa fa-cog fa-2x" id="cog"></i>
                         </div>
                         <ul class="profile__numbers">
-                            <li class="profile__posts">
+                            <!-- <li class="profile__posts">
                                 <span class="profile__number u-fat-text">10</span> posts
                             </li>
-                            <li class="profile__followers">
-                                <span class="profile__number u-fat-text">40</span> followers
+ -->                            <li class="profile__followers">
+                                <span class="profile__number u-fat-text"></span> followers
                             </li>
                             <li class="profile__following">
                                 <span class="profile__number u-fat-text">134</span> following
@@ -62,15 +68,25 @@
                         </ul>
                         <div class="profile__bio">
                             <span class="profile__full-name u-fat-text">Nicolás Serrano Arévalo</span>
-                            <p class="profile__full-bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit rerum consequuntur aperiam, dicta delectus nihil voluptas explicabo sapiente quisquam. Eius ipsam asperiores excepturi maiores, atque voluptatum sed fuga esse molestiae.</p>
+                            <p class="profile__full-bio">BIO.</p>
                             <a href="http://serranoarevalo.com" class="profile__link u-fat-text">serranoarevalo.com</a>
                         </div>
                     </div>
+                        
                 </header>
+               <div class="login__input-container">
+                           <button
+                                class="login__input login__input--btn">Add Post
+                            </button>
+                        </div>
                 <div class="profile__pictures">
+                <?php
+                while($row=$result->fetch_assoc())
+                {
+                ?>
                     <a href="image-detail.php" class="profile-picture">
                         <img
-                            src="/Instagram/views/images/feedPhoto.jpg"
+                            src="/Instagram/views/post_upl/<?php echo $row['post'];?>"
                             class="profile-picture__picture"
                         />
                         <div class="profile-picture__overlay">
@@ -82,78 +98,12 @@
                             </span>
                         </div>
                     </a>
-                    <a href="image-detail.php" class="profile-picture">
-                        <img
-                            src="/Instagram/views/images/feedPhoto.jpg"
-                            class="profile-picture__picture"
-                        />
-                        <div class="profile-picture__overlay">
-                            <span class="profile-picture__number">
-                                <i class="fa fa-heart"></i> 450
-                            </span>
-                            <span class="profile-picture__number">
-                                <i class="fa fa-comment"></i> 39
-                            </span>
-                        </div>
-                    </a>
-                    <a href="image-detail.php" class="profile-picture">
-                        <img
-                            src="/Instagram/views/images/feedPhoto.jpg"
-                            class="profile-picture__picture"
-                        />
-                        <div class="profile-picture__overlay">
-                            <span class="profile-picture__number">
-                                <i class="fa fa-heart"></i> 450
-                            </span>
-                            <span class="profile-picture__number">
-                                <i class="fa fa-comment"></i> 39
-                            </span>
-                        </div>
-                    </a>
-                    <a href="image-detail.php" class="profile-picture">
-                        <img
-                            src="/Instagram/views/images/feedPhoto.jpg"
-                            class="profile-picture__picture"
-                        />
-                        <div class="profile-picture__overlay">
-                            <span class="profile-picture__number">
-                                <i class="fa fa-heart"></i> 450
-                            </span>
-                            <span class="profile-picture__number">
-                                <i class="fa fa-comment"></i> 39
-                            </span>
-                        </div>
-                    </a>
-                    <a href="image-detail.php" class="profile-picture">
-                        <img
-                            src="/Instagram/views/images/feedPhoto.jpg"
-                            class="profile-picture__picture"
-                        />
-                        <div class="profile-picture__overlay">
-                            <span class="profile-picture__number">
-                                <i class="fa fa-heart"></i> 450
-                            </span>
-                            <span class="profile-picture__number">
-                                <i class="fa fa-comment"></i> 39
-                            </span>
-                        </div>
-                    </a>
-                    <a href="image-detail.php" class="profile-picture">
-                        <img
-                            src="/Instagram/views/images/feedPhoto.jpg"
-                            class="profile-picture__picture"
-                        />
-                        <div class="profile-picture__overlay">
-                            <span class="profile-picture__number">
-                                <i class="fa fa-heart"></i> 450
-                            </span>
-                            <span class="profile-picture__number">
-                                <i class="fa fa-comment"></i> 39
-                            </span>
-                        </div>
-                    </a>
+                    <?php
+                    }?>
                 </div>
+            
             </section>
+
         </main>
         <footer class="footer">
             <nav class="footer__nav">
@@ -185,6 +135,6 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-        <script src="js/app.js"></script>
+        <script src="/Instagram/views/js/app.js"></script>
     </body>
 </html>

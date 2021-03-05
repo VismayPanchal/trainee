@@ -64,7 +64,7 @@ class models extends connection
 		//echo $_POST['username'];
 		 if (isset($_POST['username']) &&  isset($_POST['password'])) 
 		 {
-			$qry = "SELECT user_id FROM user WHERE user_name = '$uname' and password='$pass'";
+			$qry = "SELECT * FROM user WHERE user_name = '$uname' and password='$pass'";
 
 				
 
@@ -72,7 +72,13 @@ class models extends connection
 			if($data->num_rows>0)
 			{
 				//header("Location:views/feed.php");
-				$_SESSION['id'] = $data->fetch_row();
+				$row = $data->fetch_assoc();
+				$_SESSION['id']=$row["user_id"];
+				$_SESSION['dp']=$row["user_dp"];
+				$_SESSION['bio']=$row["bio"];
+				$_SESSION['email']=$row["user_email"];
+
+
 				//
 				header("location:home_page");
 				//include_once 'views/feed.php';
@@ -97,7 +103,7 @@ class models extends connection
 
 	public function fetch_user()
 	{
-		$cur_id = $_SESSION['id'][0];
+		$cur_id = $_SESSION['id'];
 		$qrty = "SELECT * FROM user WHERE user_id != '$cur_id'";
 		$data = mysqli_query($this->conn,$qrty);
 		if($data->num_rows>0)
@@ -109,12 +115,33 @@ class models extends connection
 		}
 		return $r;
 	}
+	public function view_profile()
+	{
+		$cur_id = $_SESSION['id'];
+		//$qry="SELECT * from user inner join post ON user.user_id=post.user_id inner join user_follow ON user.user_id=user_follow.user_id inner join user_follower user.user_id=user_follower.user_id where user.user_id='$cur_id'";
+		// $qry = "SELECT * FROM user inner join post ON user.user_id=post.user_id 
+		// inner join user_follower ON user.user_id=user_follower.user_id WHERE user.user_id='$cur_id'";
+//echo "entered";
+		$qry = "SELECT * FROM post WHERE user_id='$cur_id'";
 
+		$data = mysqli_query($this->conn,$qry);
+		$count = $data->num_rows;
+	
+		if($count>0)
+		{
+
+			return $data;
+		}
+		else
+		{
+			//echo "damta noit fout";
+		}
+	}
 	public function home()
 	{
 		if(isset($_SESSION['user']))
 		{
-			$cur_id = $_SESSION['id'][0];
+			$cur_id = $_SESSION['id'];
 			///$cur_id=41;
 			//print_r($_SESSION['id'][0]);
 			$qry = "SELECT user_follow_id FROM user_follow WHERE user_id = '$cur_id'";
@@ -258,7 +285,7 @@ class models extends connection
 
 	public function edit_profile()
 	{
-		if(isset($_SESSION['id'][0]))
+		if(isset($_SESSION['id']))
 		{
 			if(isset($_POST['username']) || isset($_POST['email']) || isset($_POST['bio']) || isset($_POST['uploaded_file']))
 			{
@@ -267,7 +294,7 @@ class models extends connection
 				$bio = $_POST['bio'];
 				$dp = $_FILES["uploaded_file"]["name"];
 
-				$id=$_SESSION['id'][0];
+				$id=$_SESSION['id'];
 				$qr = "UPDATE user SET user_name='$name', user_email='$email', bio='$bio', user_dp='$dp' WHERE user_id='$id'";
 				if(mysqli_query($this->conn, $qr))
 				{ 
@@ -309,7 +336,7 @@ class models extends connection
  			   		//$path = "Instagram/views/profiles/";
  			   		$path= "views/profiles/";
  				   $path = $path . basename( $_FILES['uploaded_file']['name']);
- 				   echo $path;
+ 				   //echo $path;
 				    if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path)) {
 				      echo "The file ".  basename( $_FILES['uploaded_file']['name']). 
 				      " has been uploaded";

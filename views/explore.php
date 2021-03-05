@@ -1,3 +1,8 @@
+<?php
+session_start();
+//print_r($_SESSION);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,7 +34,7 @@
                 <a href="#" class="navigation__link">
                     <i class="fa fa-heart-o"></i>
                 </a>
-                <a href="profile" class="navigation__link">
+                <a href="view_profile" class="navigation__link">
                     <i class="fa fa-user-o"></i>
                 </a>
             </div>
@@ -62,6 +67,7 @@
                 </ul>
             </section>
         </main>
+          
         <footer class="footer">
             <nav class="footer__nav">
                 <ul class="footer__list">

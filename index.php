@@ -37,6 +37,10 @@ break;
 case '/Instagram/index.php/profile':
 $controller->edit_profile();
 break;
+case '/Instagram/index.php/view_profile':
+$controller->view_profile();
+break;
+
 default :
 $controller->login();
 break; 

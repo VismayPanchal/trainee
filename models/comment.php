@@ -1,19 +1,3 @@
-<?php
-
-session_start();
-//print_r($_SESSION['id']);
-include_once('../models/connection.php');
-$c = new connection();
-$con= $c->connect();
-$cur_id=$_SESSION['id'][0];
-$pid= $_POST['post_id'];
-echo $pid;
-$rqy = "SELECT count(*) as total from `like`";//" WHERE post_id=1";
-$result = mysqli_query($con,$rqy);
-$data = $result->fetch_assoc();
-echo $data['total'];
-
-?>
 <!-- 
 // class likes extends connection
 // {
@@ -55,3 +39,9 @@ echo $data['total'];
 // $lk = new likes();
 // $lk->getlikes();
  -->
+ -->
+<!-- // $data = json_decode(file_get_contents("php://input"));
+// echo $data->post_id."<br>"; -->
+<!-- 
+ //print_r($_SESSION['id']);
+//header("Access-Control-Allow-Methods: POST");

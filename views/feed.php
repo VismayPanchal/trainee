@@ -1,3 +1,7 @@
+ <?php
+session_start();
+//print_r($_SESSION);
+?>   
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,17 +19,26 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
+
     $('.heart').click(function(){
        
         var pid = $(this).data('id');
         // alert(pid);
+       // $_SESSION['post_id']=pid;
+        var arr={post_id:pid};
         $.ajax({
-            url:'like.php',
-            type:'POST',
-            data: { "post_id" : pid },
+            url:'/Instagram/models/like.php',
+            data: {'post_id':pid},
+            type: 'POST',
+           
+
+            //data: JSON.stringify(arr),
+            //contentType: 'application/json; charset=utf-8',
+            //dataType: 'json',
             success:function(response)
             {
-                $('#get_lk').val(response);
+                $('#get_lk').text(response);
+               // alert(response);
             }
         });
     });
@@ -53,7 +66,7 @@
                 <a href="#" class="navigation__link">
                     <i class="fa fa-heart-o"></i>
                 </a>
-                <a href="profile" class="navigation__link">
+                <a href="view_profile" class="navigation__link">
                     <i class="fa fa-user-o"></i>
                 </a>
             </div>
@@ -91,7 +104,7 @@
                             <i class="fa fa-comment-o fa-lg"></i>
                         </span>
                     </div>
-                    <span class="photo__likes" id="get_lk"> </span> likes
+                    <label id="get_lk"></label> likes
                     <ul class="photo__comments">
                         <li class="photo__comment">
                             <span class="photo__comment-author"><?php echo  $d['user_name'];?></span><?php echo  $d['caption'];?>

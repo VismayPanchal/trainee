@@ -35,8 +35,15 @@ public function login()
   public function explore()
   {
     $data = $this->model->fetch_user();
+    
     //header('location:../views/explore.php');
     include 'views/explore.php';
+  }
+  public function view_profile()
+  {
+    $result = $this->model->view_profile();
+    //  echo $result;
+    include 'views/profile.php';
   }
 
   public function home_page()
